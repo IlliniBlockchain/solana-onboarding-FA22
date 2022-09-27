@@ -1,6 +1,6 @@
 <div align="center">
 
-# ⚓︎ Counter Anchor
+# ⚓︎ FA22 Solana Onboarding - Counter Project
 
 This repository contains the a Counter Solana program made using the Anchor Framework. The code contains all the necessary workflow to develop a Solana Program, from development, deployment, to testing.
 
