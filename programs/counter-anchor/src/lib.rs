@@ -6,53 +6,34 @@ declare_id!("96QBNcuHuQv1x1q1feJNFDckf6yNEYHcVdkh8QFvjT3i");
 pub mod counter_anchor {
     use super::*;
     pub fn initialize(ctx: Context<Initialize>) -> ProgramResult {
-        let counter_account = &mut ctx.accounts.counter_account;
-        counter_account.count = 0;
+        // write your intialize ix here
         Ok(())
     }
 
     pub fn increase(ctx: Context<Increase>, increment: u64) -> ProgramResult {
-        let counter_account = &mut ctx.accounts.counter_account;
-        let current_count = &counter_account.count;
-        counter_account.count = if u64::MAX - current_count >= increment {
-            current_count + increment
-        } else {
-            u64::MAX
-        };
+        // write your increase ix here
         Ok(())
     }
 
     pub fn decrease(ctx: Context<Decrease>, decrement: u64) -> ProgramResult {
-        let counter_account = &mut ctx.accounts.counter_account;
-        let current_count = &counter_account.count;
-        counter_account.count = if current_count >= &decrement {
-            current_count - decrement
-        } else {
-            0
-        };
+        // write your decrease ix here
         Ok(())
     }
 }
 
 #[derive(Accounts)]
 pub struct Initialize<'info> {
-    #[account(init, payer = user, space = 8 + 8)]
-    pub counter_account: Account<'info, Counter>,
-    #[account(mut)]
-    pub user: Signer<'info>,
-    pub system_program: Program<'info, System>,
+    // pass in the accounts needed for initialize here
 }
 
 #[derive(Accounts)]
 pub struct Increase<'info> {
-    #[account(mut)]
-    pub counter_account: Account<'info, Counter>,
+    // pass in the accounts needed for increase here
 }
 
 #[derive(Accounts)]
 pub struct Decrease<'info> {
-    #[account(mut)]
-    pub counter_account: Account<'info, Counter>,
+    // pass in the accounts needed for decrease here
 }
 
 #[account]
